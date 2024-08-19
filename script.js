@@ -3,12 +3,19 @@ const inputWeight = document.getElementById("weight");
 const calculateBtn = document.getElementById("calculate");
 const bmiScore = document.querySelector(".bmi-score");
 const items = document.querySelectorAll(".item");
-
-let heightValue = "";
-let weightValue = "";
-
 const form = document.getElementById("bmiform");
 
+// Details
+const askForDetails = document.querySelector(".ask-for-details a");
+const detailsSection = document.getElementById("details");
+const detailsBmiScore = document.getElementById("bmi-score");
+const bodyType = document.getElementById("body-type");
+const genTipsList = document.querySelector(".general-tips ul");
+const vegTipsList = document.querySelector(".veg ul");
+const nonVegTipsList = document.querySelector(".non-veg ul");
+
+askForDetails.classList.add('disabled');
+let bmiValue = 0;
 const styles = [
   { backgroundColor: "#ff0b0b", color: "white" },
   { backgroundColor: "#de6903", color: "white" },
@@ -20,107 +27,329 @@ const styles = [
   { backgroundColor: "#970000", color: "white" },
 ];
 
+// Tips Details
+const tipsDetails = [
+  {
+    category: "Under Weight",
+    generalTips: [
+      {
+        title: "Increase Caloric Intake",
+        tip: "Eat more frequent meals and snacks with a focus on calorie-dense foods",
+      },
+      {
+        title: "Balanced Diet",
+        tip: "Include a mix of carbohydrates, proteins, and fats in your meals",
+      },
+      {
+        title: "Strength Training",
+        tip: "Engage in strength training exercises to build muscle mass",
+      },
+    ],
+    vegTips: [
+      {
+        title: "Nuts and Seeds",
+        tip: "Incorporate almonds, walnuts, chia seeds, and flaxseeds for extra calories and healthy fats",
+      },
+      {
+        title: "Nut Butters",
+        tip: "Add peanut butter or almond butter to smoothies and snacks",
+      },
+      {
+        title: "Whole Grains",
+        tip: "Opt for quinoa, oats, and whole grain bread.",
+      },
+      {
+        title: "Dairy Products: ",
+        tip: "Consume whole milk, yogurt, and cheese for added calories and protein",
+      },
+    ],
+    nonVegTips: [
+      {
+        title: "Lean Meats",
+        tip: "Include chicken, turkey, and lean cuts of beef or pork for protein and calories",
+      },
+      {
+        title: "Eggs",
+        tip: "Eat eggs in various forms, like boiled, scrambled, or in omelets",
+      },
+      {
+        title: "Fish",
+        tip: "Incorporate fatty fish like salmon or mackerel for healthy fats and protein",
+      },
+      {
+        title: "Dairy Products",
+        tip: "Include milk, cheese, and yogurt for extra calories and protein",
+      },
+    ],
+  },
+
+  {
+    category: "Normal Weight",
+    generalTips: [
+      {
+        title: "Maintain Balance",
+        tip: "Continue a balanced diet with appropriate portions of proteins, carbs, and fats",
+      },
+      {
+        title: "Regular Exercise",
+        tip: "Maintain a mix of aerobic and strength training exercises",
+      },
+      {
+        title: "Hydration",
+        tip: "Drink plenty of water throughout the day",
+      },
+    ],
+    vegTips: [
+      {
+        title: "Variety",
+        tip: "Include a variety of fruits, vegetables, whole grains, and legumes",
+      },
+      {
+        title: "Protein Sources",
+        tip: "Opt for beans, lentils, tofu, and tempeh",
+      },
+      {
+        title: "Healthy Fats",
+        tip: "Use avocados, nuts, and olive oil in your diet",
+      },
+      {
+        title: "Fiber",
+        tip: "Focus on high-fiber foods like vegetables, fruits, and whole grains",
+      },
+    ],
+    nonVegTips: [
+      {
+        title: "Lean Proteins",
+        tip: "Include a variety of lean meats, poultry, and fish",
+      },
+      {
+        title: "Whole Grains",
+        tip: "Choose brown rice, whole wheat bread, and oats",
+      },
+      {
+        title: "Healthy Fats",
+        tip: "Incorporate avocados, nuts, and olive oil",
+      },
+      {
+        title: "Fruits and Vegetables",
+        tip: "Maintain a good intake of a wide variety of fruits and vegetables",
+      },
+    ],
+  },
+
+  {
+    category: "Under Weight",
+    generalTips: [
+      {
+        title: "Increase Caloric Intake",
+        tip: "Eat more frequent meals and snacks with a focus on calorie-dense foods",
+      },
+      {
+        title: "Balanced Diet",
+        tip: "Include a mix of carbohydrates, proteins, and fats in your meals",
+      },
+      {
+        title: "Strength Training",
+        tip: "Engage in strength training exercises to build muscle mass",
+      },
+    ],
+    vegTips: [
+      {
+        title: "Nuts and Seeds",
+        tip: "Incorporate almonds, walnuts, chia seeds, and flaxseeds for extra calories and healthy fats",
+      },
+      {
+        title: "Nut Butters",
+        tip: "Add peanut butter or almond butter to smoothies and snacks",
+      },
+      {
+        title: "Whole Grains",
+        tip: "Opt for quinoa, oats, and whole grain bread",
+      },
+      {
+        title: "Dairy Products",
+        tip: "Consume whole milk, yogurt, and cheese for added calories and protein",
+      },
+    ],
+    nonVegTips: [
+      {
+        title: "Lean Meats",
+        tip: "Include chicken, turkey, and lean cuts of beef or pork for protein and calories",
+      },
+      {
+        title: "Eggs",
+        tip: "Eat eggs in various forms, like boiled, scrambled, or in omelets",
+      },
+      {
+        title: "Fish",
+        tip: "Incorporate fatty fish like salmon or mackerel for healthy fats and protein",
+      },
+      {
+        title: "Dairy Products",
+        tip: "Include milk, cheese, and yogurt for extra calories and protein",
+      },
+    ],
+  },
+
+  {
+    category: "Obesity",
+    generalTips: [
+      {
+        title: "Caloric Deficit",
+        tip: "Focus on creating a calorie deficit to promote weight loss",
+      },
+      {
+        title: "Frequent, Small Meals",
+        tip: "Eat smaller, more frequent meals to help control hunger",
+      },
+      {
+        title: "Consult a Professional",
+        tip: "Consider seeking advice from a healthcare provider or dietitian for personalized guidance",
+      },
+    ],
+    vegTips: [
+      {
+        title: "Low-Calorie Options",
+        tip: "Focus on low-calorie vegetables, fruits, and legumes",
+      },
+      {
+        title: "Healthy Cooking Methods",
+        tip: "Use methods like steaming, grilling, or baking instead of frying",
+      },
+      {
+        title: "Hydration",
+        tip: "Drink plenty of water and herbal teas",
+      },
+    ],
+    nonVegTips: [
+      {
+        title: "Lean Proteins",
+        tip: "Choose lean meats and fish, and avoid high-fat cuts",
+      },
+      {
+        title: "Vegetable-Based Meals",
+        tip: "Incorporate more vegetable-based meals and reduce meat portions",
+      },
+      {
+        title: "Limit High-Calorie Sauces",
+        tip: "Avoid creamy or sugary sauces and dressings",
+      },
+    ],
+  },
+];
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  askForDetails.classList.remove('disabled');
+  askForDetails.style.color = "white";
 
   const heightValue = parseFloat(document.getElementById("height").value);
   const weightValue = parseFloat(document.getElementById("weight").value);
 
-  const heightValueM = heightValue / 100;
-  const bmiValue = weightValue / (heightValueM * heightValueM);
-  const roundedBmiValue = bmiValue.toFixed(1);
+  bmiValue = calculateBMI(heightValue, weightValue);
+  const index = getIndexByBMI(bmiValue);
+  highlighTheType(index);
+});
 
-  bmiScore.textContent = roundedBmiValue;
+askForDetails.addEventListener("click", (event) => {
+  console.log("asked for details!");
+
+  if (askForDetails.classList.contains('disabled')) {
+    event.preventDefault();
+  } else {
+    console.log('Anchor tag clicked!');
+    detailsSection.style.display = 'block';
+    setDetails(bmiValue);
+  }
+});
+
+function highlighTheType(index) {
+  // Set the BMI Score
+  bmiScore.textContent = bmiValue;
   bmiScore.style.color = "black";
 
+  // Reset the highlighted type, if already exists
   items.forEach((item) => {
     item.style.backgroundColor = "";
     item.style.color = "";
     item.style.padding = "";
   });
 
-  let index = 3;
-  if (roundedBmiValue < 16) {
-    index = 0;
-  } else if (roundedBmiValue >= 16 && roundedBmiValue < 17) {
-    index = 1;
-  } else if (roundedBmiValue >= 17 && roundedBmiValue < 18.5) {
-    index = 2;
-  } else if (roundedBmiValue >= 18.5 && roundedBmiValue < 25) {
-    index = 3;
-  } else if (roundedBmiValue >= 25 && roundedBmiValue < 30) {
-    index = 4;
-  } else if (roundedBmiValue >= 30 && roundedBmiValue < 35) {
-    index = 5;
-  } else if (roundedBmiValue >= 35 && roundedBmiValue < 40) {
-    index = 6;
-  } else if (roundedBmiValue >= 40) {
-    index = 7;
-  }
-
+  // Highlight the type and give padding and roundness to border
   items[index].style.padding = "5px";
   items[index].style.borderRadius = "5px";
   Object.assign(items[index].style, styles[index]);
+}
 
+function calculateBMI(heightValue, weightValue) {
+  const heightValueM = heightValue / 100;
+  const bmiValueFloat = weightValue / (heightValueM * heightValueM);
+  const roundedBmiValue = bmiValueFloat.toFixed(1);
 
-  //   console.log(index);
+  return roundedBmiValue;
+}
 
-  //   switch (index) {
-  //     case 0:
-  //       console.log(items[index]);
-  //       items[index].style.padding = "5px";
-  //       items[index].style.color = "white";
-  //       items[index].style.borderRadius = "5px";
-  //       items[index].style.backgroundColor = "#ff0b0b";
-  //       break;
-  //     case 1:
-  //       console.log(items[index]);
-  //       items[index].style.padding = "5px";
-  //       items[index].style.borderRadius = "5px";
-  //       items[index].style.color = "white";
-  //       items[index].style.backgroundColor = "#de6903";
-  //       break;
-  //     case 2:
-  //       console.log(items[index]);
-  //       items[index].style.padding = "5px";
-  //       items[index].style.borderRadius = "5px";
-  //       items[index].style.color = "black";
-  //       items[index].style.backgroundColor = "#f2f700";
-  //       break;
-  //     case 3:
-  //       console.log(items[index]);
-  //       items[index].style.padding = "5px";
-  //       items[index].style.borderRadius = "5px";
-  //       items[index].style.color = "white";
-  //       items[index].style.backgroundColor = "#41de03";
-  //       break;
-  //     case 4:
-  //       console.log(items[index]);
-  //       items[index].style.padding = "5px";
-  //       items[index].style.borderRadius = "5px";
-  //       items[index].style.color = "black";
-  //       items[index].style.backgroundColor = "#f2f700";
-  //       break;
-  //     case 5:
-  //       console.log(items[index]);
-  //       items[index].style.padding = "5px";
-  //       items[index].style.borderRadius = "5px";
-  //       items[index].style.color = "white";
-  //       items[index].style.backgroundColor = "#de6903";
-  //       break;
-  //     case 6:
-  //       console.log(items[index]);
-  //       items[index].style.padding = "5px";
-  //       items[index].style.borderRadius = "5px";
-  //       items[index].style.color = "white";
-  //       items[index].style.backgroundColor = "#ff0b0b";
-  //       break;
-  //     case 7:
-  //       console.log(items[index]);
-  //       items[index].style.padding = "5px";
-  //       items[index].style.borderRadius = "5px";
-  //       items[index].style.color = "white";
-  //       items[index].style.backgroundColor = "#970000";
-  //       break;
-  //   }
-});
+function getIndexByBMI(bmiValue) {
+  if (bmiValue < 16) {
+    index = 0;
+  } else if (bmiValue >= 16 && bmiValue < 17) {
+    index = 1;
+  } else if (bmiValue >= 17 && bmiValue < 18.5) {
+    index = 2;
+  } else if (bmiValue >= 18.5 && bmiValue < 25) {
+    index = 3;
+  } else if (bmiValue >= 25 && bmiValue < 30) {
+    index = 4;
+  } else if (bmiValue >= 30 && bmiValue < 35) {
+    index = 5;
+  } else if (bmiValue >= 35 && bmiValue < 40) {
+    index = 6;
+  } else if (bmiValue >= 40) {
+    index = 7;
+  }
+  return index;
+}
+
+function setDetails(bmiValue) {
+
+  const indexForDetails = returnIndexForDetails(bmiValue);
+  const bodyTypeValue = tipsDetails[indexForDetails].category;
+
+  detailsBmiScore.textContent = bmiValue;
+  bodyType.textContent = bodyTypeValue;
+
+  createListOfTips(indexForDetails);
+}
+
+function returnIndexForDetails(bmiValue) {
+  if (bmiValue < 18.5) {
+    index = 0;
+  } else if (bmiValue >= 18.5 && bmiValue < 24.9) {
+    index = 1;
+  } else if (bmiValue >= 25 && bmiValue < 29.9) {
+    index = 2;
+  } else if (bmiValue >= 30) {
+    index = 3;
+  }
+  return index;
+}
+
+function createListOfTips(index) {
+  const genTipsData = tipsDetails[index].generalTips;
+  const vegTipsData = tipsDetails[index].vegTips;
+  const nonVegTipsData = tipsDetails[index].nonVegTips;
+
+  createAndAppendList(genTipsData, genTipsList);
+  createAndAppendList(vegTipsData, vegTipsList);
+  createAndAppendList(nonVegTipsData, nonVegTipsList);
+}
+
+function createAndAppendList(tipsData, tipsList) {
+  tipsList.innerHTML = "";
+  tipsData.forEach((tipItem) => {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `<b>${tipItem.title}: </b>${tipItem.tip}.`;
+    tipsList.appendChild(listItem);
+  });
+}
