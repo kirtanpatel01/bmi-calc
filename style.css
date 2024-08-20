@@ -14,7 +14,7 @@ body {
 }
 
 .main-container {
-/*   height: 100vh; */
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,6 +24,7 @@ body {
 
 .bmi-calc-header h1 {
   margin: 3rem 0;
+  text-align: center;
 }
 
 .secondary-container {
@@ -98,7 +99,7 @@ input[type="number"] {
   appearance: none;
 }
 
-button {
+#calculate {
   width: 40%;
   margin: 1.5rem 1rem;
   padding: 0.625rem;
@@ -112,7 +113,7 @@ button {
   transition: transform 0.3s ease;
 }
 
-button:hover {
+#calculate:hover {
   cursor: pointer;
   transform: scale(1.08);
   background-color: #001aad;
