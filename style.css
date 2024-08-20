@@ -228,7 +228,7 @@ button:hover {
   padding-top: 0;
 }
 
-.general-tips > ul > li {
+.general-tips > ul > li:last-child {
   padding-bottom: 0;
 }
 
@@ -254,7 +254,7 @@ button:hover {
 }
 
 .veg-non-veg-box > ul {
-  padding: 0 7rem;
+  padding: 0 2rem;
 }
 
 .veg-non-veg-box > ul > li {
@@ -284,6 +284,25 @@ ul {
   .ask-for-details {
     padding: 0 1rem;
   }
+  .food-box {
+    grid-template-columns: 1fr;
+  }
+  #details {
+    padding: 1.5rem;
+  }
+
+  .details-container {
+    padding: 1rem;
+  }
+
+  .general-tips > ul {
+    padding: 0 1rem;
+    text-align: start;
+  }
+
+  .veg-non-veg-box > ul {
+    padding: 0 1rem;
+  }
 }
 
 @media (min-width: 281px) and (max-width: 320px) {
@@ -303,9 +322,29 @@ ul {
   .ask-for-details {
     padding: 0 1rem;
   }
+  .food-box {
+    grid-template-columns: 1fr;
+  }
+  #details {
+    padding: 1.5rem;
+  }
+
+  .details-container {
+    padding: 1rem;
+  }
+
+  .general-tips > ul {
+    padding: 0 1rem;
+    text-align: start;
+  }
+
+  .veg-non-veg-box > ul {
+    padding: 0 1rem;
+  }
+
 }
 
-@media (min-width: 321px) and (max-width: 586px) {
+@media (min-width: 321px) and (max-width: 587px) {
   .main-container {
     padding: 1rem;
   }
@@ -319,6 +358,25 @@ ul {
   }
   .ask-for-details {
     padding: 0 2rem;
+  }
+  .food-box {
+    grid-template-columns: 1fr;
+  }
+  #details {
+    padding: 2rem;
+  }
+
+  .details-container {
+    padding: 1.5rem;
+  }
+
+  .general-tips > ul {
+    padding: 0 1.5rem;
+    text-align: start;
+  }
+
+  .veg-non-veg-box > ul {
+    padding: 0 1.5rem;
   }
 }
 
@@ -336,9 +394,51 @@ ul {
   .ask-for-details {
     padding: 0 3rem;
   }
+  .food-box {
+    grid-template-columns: 1fr;
+  }
+  #details {
+    padding: 2.5rem;
+  }
+
+  .details-container {
+    padding: 1.5rem;
+  }
+
+  .general-tips > ul {
+    padding: 0 1.5rem;
+    text-align: start;
+  }
+
+  .veg-non-veg-box > ul {
+    padding: 0 1.5rem;
+  }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media(min-width: 769px) and (max-width: 824px) {
+  .food-box {
+    grid-template-columns: 1fr;
+  }
+
+  #details {
+    padding: 2.5rem;
+  }
+
+  .details-container {
+    padding: 1.5rem;
+  }
+
+  .general-tips > ul {
+    padding: 0 1.5rem;
+    text-align: start;
+  }
+
+  .veg-non-veg-box > ul {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 824px) and (max-width: 1024px) {
   .main-container {
     padding: 3rem;
   }
@@ -361,8 +461,5 @@ ul {
   }
   .secondary-container {
     flex-direction: row;
-  }
-  .ask-for-details {
-    padding: 0 5rem;
   }
 }
