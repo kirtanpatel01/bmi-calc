@@ -5,7 +5,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #1d43ff 30%, #6500fe 100%);
+  background-color: #1d43ff;
   font-family: "Josefin Sans";
 }
 
@@ -202,7 +202,6 @@ input[type="number"] {
 
 #details {
   height: 80%;
-  padding: 3rem;
 }
 
 .details-container {
@@ -210,14 +209,36 @@ input[type="number"] {
   grid-template-rows: auto auto auto;
   grid-gap: 1rem;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.details-header {
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  padding: 1.1rem;
+}
+
+.details-header > h2, p, span {
+  margin: 0;
+  padding: 0;
+
+}
+
+.details-header > h2 {
+  margin-bottom: .825rem;
+}
+
+.general-tips {
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
 }
 
 .general-tips h2 {
   color: #d4bb00;
+  margin: 0 0 0.825rem 0;
 }
 
 .general-tips ul li {
@@ -227,11 +248,16 @@ input[type="number"] {
   padding: 1rem;
   margin-top: 0.35rem;
   border-left: 4px solid #d4bb00;
+  text-align: start;
 }
 
 .food-recommendations > h2 {
   color: #0000ec;
-  margin: 1.5rem 0 0 0;
+  margin: 0 0 1rem 0;
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .food-recommendations .veg-non-veg-box.veg h3 {
@@ -242,11 +268,23 @@ input[type="number"] {
   color: #d84315;
 }
 
+.veg-non-veg-box > h3 {
+  margin: 0 0 1rem 0;
+
+}
+
 .food-box {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
   margin-bottom: 1.35rem;
+}
+
+.veg-non-veg-box {
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
 }
 
 .veg-non-veg-box ul li {
@@ -291,19 +329,6 @@ ul {
   .food-box {
     grid-template-columns: 1fr;
   }
-  #details {
-    padding: 1.5rem;
-  }
-  .details-container {
-    padding: 1rem;
-  }
-  .general-tips > ul {
-    padding: 0 1rem;
-    text-align: start;
-  }
-  .veg-non-veg-box > ul {
-    padding: 0 1rem;
-  }
 }
 
 @media (min-width: 281px) and (max-width: 320px) {
@@ -325,19 +350,6 @@ ul {
   .food-box {
     grid-template-columns: 1fr;
   }
-  #details {
-    padding: 1.5rem;
-  }
-  .details-container {
-    padding: 1rem;
-  }
-  .general-tips > ul {
-    padding: 0 1rem;
-    text-align: start;
-  }
-  .veg-non-veg-box > ul {
-    padding: 0 1rem;
-  }
 }
 
 @media (min-width: 321px) and (max-width: 587px) {
@@ -358,19 +370,6 @@ ul {
   .food-box {
     grid-template-columns: 1fr;
   }
-  #details {
-    padding: 2rem;
-  }
-  .details-container {
-    padding: 1.5rem;
-  }
-  .general-tips > ul {
-    padding: 0 1.5rem;
-    text-align: start;
-  }
-  .veg-non-veg-box > ul {
-    padding: 0 1.5rem;
-  }
 }
 
 @media (min-width: 587px) and (max-width: 768px) {
@@ -390,37 +389,11 @@ ul {
   .food-box {
     grid-template-columns: 1fr;
   }
-  #details {
-    padding: 2.5rem;
-  }
-  .details-container {
-    padding: 1.5rem;
-  }
-  .general-tips > ul {
-    padding: 0 1.5rem;
-    text-align: start;
-  }
-  .veg-non-veg-box > ul {
-    padding: 0 1.5rem;
-  }
 }
 
 @media (min-width: 769px) and (max-width: 824px) {
   .food-box {
     grid-template-columns: 1fr;
-  }
-  #details {
-    padding: 2.5rem;
-  }
-  .details-container {
-    padding: 1.5rem;
-  }
-  .general-tips > ul {
-    padding: 0 1.5rem;
-    text-align: start;
-  }
-  .veg-non-veg-box > ul {
-    padding: 0 1.5rem;
   }
 }
 
