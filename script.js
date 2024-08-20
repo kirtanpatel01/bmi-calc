@@ -14,7 +14,8 @@ const genTipsList = document.querySelector(".general-tips ul");
 const vegTipsList = document.querySelector(".veg ul");
 const nonVegTipsList = document.querySelector(".non-veg ul");
 
-askForDetails.classList.add('disabled');
+askForDetails.classList.add("disabled");
+
 let bmiValue = 0;
 const styles = [
   { backgroundColor: "#ff0b0b", color: "white" },
@@ -241,8 +242,7 @@ const tipsDetails = [
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  askForDetails.classList.remove('disabled');
-  askForDetails.style.color = "white";
+  askForDetails.classList.remove("disabled");
 
   const heightValue = parseFloat(document.getElementById("height").value);
   const weightValue = parseFloat(document.getElementById("weight").value);
@@ -255,11 +255,11 @@ form.addEventListener("submit", (event) => {
 askForDetails.addEventListener("click", (event) => {
   console.log("asked for details!");
 
-  if (askForDetails.classList.contains('disabled')) {
+  if (askForDetails.classList.contains("disabled")) {
     event.preventDefault();
   } else {
-    console.log('Anchor tag clicked!');
-    detailsSection.style.display = 'block';
+    console.log("Anchor tag clicked!");
+    detailsSection.style.display = "block";
     setDetails(bmiValue);
   }
 });
@@ -312,7 +312,6 @@ function getIndexByBMI(bmiValue) {
 }
 
 function setDetails(bmiValue) {
-
   const indexForDetails = returnIndexForDetails(bmiValue);
   const bodyTypeValue = tipsDetails[indexForDetails].category;
 
