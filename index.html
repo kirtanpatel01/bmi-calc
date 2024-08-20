@@ -8,16 +8,6 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
-    /><!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
     <title>BMI Calculator</title>
@@ -86,114 +76,6 @@
       </div>
 
       <div id="ask-details" class="ask-for-details">
-        <h3>
-          <a href="#details"
-            >Do you want health tips according to yout BMI score ?</a
-          >
-        </h3>
-      </div>
-    </div>
-
-    <section id="details" style="display: none">
-      <div class="details-container">
-        <header class="details-header">
-          <h2>BMI Score: <span id="bmi-score">24.5</span></h2>
-          <p>Body Type: <span id="body-type">Mesomorph</span></p>
-        </header>
-
-        <div class="general-tips">
-          <h2>General Tips</h2>
-          <ul></ul>
-        </div>
-
-        <div class="food-recommendations">
-          <h2>Food</h2>
-          <div class="food-box">
-            <div class="veg-non-veg-box veg">
-              <h3>Veg Options</h3>
-              <ul></ul>
-            </div>
-            <div class="veg-non-veg-box non-veg">
-              <h3>Non-Veg Options</h3>
-              <ul></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <script src="script.js"></script>
-  </body>
-</html>
-
-    <link rel="stylesheet" href="style.css" />
-    <title>BMI Calculator</title>
-  </head>
-  <body>
-    <div class="main-container">
-      <header class="bmi-calc-header">
-        <h1>Body Mass Index Calculator</h1>
-      </header>
-
-      <div class="secondary-container">
-        <div class="form-container">
-          <form id="bmiform">
-            <label for="height">
-              <span>Height (cm)</span>
-              <input
-                type="number"
-                id="height"
-                name="height"
-                placeholder="180"
-                min="1"
-                required
-              />
-            </label>
-
-            <label for="weight">
-              <span>Weight (kg)</span>
-              <input
-                type="number"
-                id="weight"
-                name="weight"
-                placeholder="65"
-                min="1"
-                required
-              />
-            </label>
-
-            <button type="submit" id="calculate">Calculate</button>
-          </form>
-        </div>
-
-        <div id="result">
-          <h2>Your BMI Score is</h2>
-          <h1 class="bmi-score">20.1</h1>
-
-          <div class="info">
-            <ul class="info-list">
-              <li class="item severe-thin">Severe Thinness < 16</li>
-              <hr class="list-hr" />
-              <li class="item moderate-thin">Moderate Thinness 16 - 17</li>
-              <hr class="list-hr" />
-              <li class="item mild-thin">Mild Thinness 17 - 18.5</li>
-              <hr class="list-hr" />
-              <li class="item normal">Normal 18.5 - 25</li>
-              <hr class="list-hr" />
-              <li class="item overweight">Overweight 25 - 30</li>
-              <hr class="list-hr" />
-              <li class="item obese-1">Obese Class I 30 - 35</li>
-              <hr class="list-hr" />
-              <li class="item obese-2">Obese Class II 35 - 40</li>
-              <hr class="list-hr" />
-              <li class="item obese-3">Obese Class III > 40</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="ask-for-details">
         <h3>
           <a href="#details"
             >Do you want health tips according to yout BMI score ?</a
