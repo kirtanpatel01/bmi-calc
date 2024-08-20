@@ -239,9 +239,7 @@ const tipsDetails = [
   },
 ];
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
+form.addEventListener("click", () => {
   askForDetails.classList.remove("disabled");
 
   const heightValue = parseFloat(document.getElementById("height").value);
