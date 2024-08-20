@@ -5,8 +5,12 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #1d6cff;
+  background: linear-gradient(135deg, #1d43ff 30%, #6500fe 100%);
   font-family: "Josefin Sans";
+}
+
+:root {
+  --primary-color: #1d6cff;
 }
 
 .main-container {
@@ -181,7 +185,11 @@ button:hover {
 
 .ask-for-details a {
   text-decoration: none;
-  color: #ffffff66;
+  color: #fff;
+}
+
+.ask-for-details a:hover {
+  color: #000;
 }
 
 .disabled {
@@ -192,7 +200,6 @@ button:hover {
 }
 
 #details {
-  /* width: 100vw; */
   height: 80%;
   padding: 3rem;
 }
@@ -204,61 +211,58 @@ button:hover {
   align-items: center;
   padding: 2rem;
   background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
-.details-header {
-  justify-self: center;
+.general-tips h2 {
+  color: #d4bb00;
 }
 
-.general-tips {
-  display: grid;
-  grid-template-rows: auto auto;
-  grid-gap: 1rem;
+.general-tips ul li {
+  background-color: #fffbde;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-top: 0.35rem;
+  border-left: 4px solid #d4bb00;
 }
 
-.general-tips > ul {
-  padding: 0 2rem;
+.food-recommendations > h2 {
+  color: #0000ec;
+  margin: 1.5rem 0 0 0;
 }
 
-.general-tips > ul > li {
-  padding: 1rem 0;
+.food-recommendations .veg-non-veg-box.veg h3 {
+  color: #388e3c;
 }
 
-.general-tips > ul > li:first-child {
-  padding-top: 0;
-}
-
-.general-tips > ul > li:last-child {
-  padding-bottom: 0;
-}
-
-.food-recommendations {
-  display: grid;
-  grid-template-rows: auto auto;
-  grid-gap: 0.5rem;
-  margin-top: 1.5rem;
+.food-recommendations .veg-non-veg-box.non-veg h3 {
+  color: #d84315;
 }
 
 .food-box {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
+  margin-bottom: 1.35rem;
 }
 
-.veg-non-veg-box {
-  justify-self: center;
-  display: grid;
-  grid-template-rows: auto auto;
-  justify-items: center;
-  grid-gap: 0.5rem;
+.veg-non-veg-box ul li {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem;
+  margin-top: 0.35rem;
 }
 
-.veg-non-veg-box > ul {
-  padding: 0 2rem;
+.veg-non-veg-box.veg ul li {
+  border-left: 4px solid #388e3c;
+  background-color: #f0fbf1;
 }
 
-.veg-non-veg-box > ul > li {
-  padding: 0.625rem 0;
+.veg-non-veg-box.non-veg ul li {
+  border-left: 4px solid #d84315;
+  background-color: #fff4f0;
 }
 
 ul {
@@ -271,7 +275,6 @@ ul {
   .main-container {
     padding: 1rem;
   }
-
   .form-container {
     margin-right: 0;
     max-width: 100px;
@@ -290,16 +293,13 @@ ul {
   #details {
     padding: 1.5rem;
   }
-
   .details-container {
     padding: 1rem;
   }
-
   .general-tips > ul {
     padding: 0 1rem;
     text-align: start;
   }
-
   .veg-non-veg-box > ul {
     padding: 0 1rem;
   }
@@ -309,7 +309,6 @@ ul {
   .main-container {
     padding: 1rem;
   }
-
   .form-container {
     margin-right: 0;
     max-width: 200px;
@@ -328,20 +327,16 @@ ul {
   #details {
     padding: 1.5rem;
   }
-
   .details-container {
     padding: 1rem;
   }
-
   .general-tips > ul {
     padding: 0 1rem;
     text-align: start;
   }
-
   .veg-non-veg-box > ul {
     padding: 0 1rem;
   }
-
 }
 
 @media (min-width: 321px) and (max-width: 587px) {
@@ -365,16 +360,13 @@ ul {
   #details {
     padding: 2rem;
   }
-
   .details-container {
     padding: 1.5rem;
   }
-
   .general-tips > ul {
     padding: 0 1.5rem;
     text-align: start;
   }
-
   .veg-non-veg-box > ul {
     padding: 0 1.5rem;
   }
@@ -400,39 +392,32 @@ ul {
   #details {
     padding: 2.5rem;
   }
-
   .details-container {
     padding: 1.5rem;
   }
-
   .general-tips > ul {
     padding: 0 1.5rem;
     text-align: start;
   }
-
   .veg-non-veg-box > ul {
     padding: 0 1.5rem;
   }
 }
 
-@media(min-width: 769px) and (max-width: 824px) {
+@media (min-width: 769px) and (max-width: 824px) {
   .food-box {
     grid-template-columns: 1fr;
   }
-
   #details {
     padding: 2.5rem;
   }
-
   .details-container {
     padding: 1.5rem;
   }
-
   .general-tips > ul {
     padding: 0 1.5rem;
     text-align: start;
   }
-
   .veg-non-veg-box > ul {
     padding: 0 1.5rem;
   }
