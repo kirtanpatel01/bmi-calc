@@ -21,31 +21,39 @@
       <div class="secondary-container">
         <div class="form-container">
           <form id="bmiform">
-            <label for="height">
-              <span>Height (cm)</span>
-              <input
-                type="number"
-                id="height"
-                name="height"
-                placeholder="180"
-                min="1"
-                required
-              />
-            </label>
+            <div class="input-container">
+              <label for="height">
+                <span>Height (cm)</span>
+                <input
+                  type="number"
+                  id="height"
+                  name="height"
+                  placeholder="180"
+                  min="1"
+                  required
+                />
+                <div class="error-dialog" id="heightError">
+                  Please enter a valid height.
+                </div>
+              </label>
 
-            <label for="weight">
-              <span>Weight (kg)</span>
-              <input
-                type="number"
-                id="weight"
-                name="weight"
-                placeholder="65"
-                min="1"
-                required
-              />
-            </label>
+              <label for="weight">
+                <span>Weight (kg)</span>
+                <input
+                  type="number"
+                  id="weight"
+                  name="weight"
+                  placeholder="65"
+                  min="1"
+                  required
+                />
+                <div class="error-dialog" id="weightError">
+                  Please enter a valid weight.
+                </div>
+              </label>
 
-            <a id="calculate" href="#ask-details">Calculate</a>
+              <a id="calculate" href="#ask-details">Calculate</a>
+            </div>
           </form>
         </div>
 
@@ -78,17 +86,17 @@
       <div id="ask-details" class="ask-for-details">
         <h3>
           <a href="#details"
-            >Do you want health tips according to your BMI score ?</a
+            >Do you want health tips according to yout BMI score ?</a
           >
         </h3>
       </div>
     </div>
 
-    <section id="details" style="display: none">
+    <section id="details">
       <div class="details-container">
         <header class="details-header">
           <h2>BMI Score: <span id="bmi-score">24.5</span></h2>
-          <p>Body Type: <span id="body-type">Mesomorph</span></p>
+          <p><span id="body-type">Mesomorph</span></p>
         </header>
 
         <div class="general-tips">
@@ -111,7 +119,6 @@
         </div>
       </div>
     </section>
-
 
     <script src="script.js"></script>
   </body>
