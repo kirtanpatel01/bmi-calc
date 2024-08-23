@@ -242,7 +242,29 @@ const tipsDetails = [
 
 calculateBtn.addEventListener("click", () => {
   askForDetails.classList.remove("disabled");
-  highlighTheType();
+
+  const heightValue = parseFloat(document.getElementById("height").value);
+  const weightValue = parseFloat(document.getElementById("weight").value);
+
+  if (isNaN(heightValue) || heightValue < 0 || heightValue > 250) {
+    heightError.style.display = "block";
+    resetViews();
+  }
+
+  if (isNaN(weightValue) || weightValue < 0 || weightValue > 300) {
+    weightError.style.display = "block";
+    resetViews();
+  }
+
+  bmiValue = calculateBMI(heightValue, weightValue);
+  const index = getIndexByBMI(bmiValue);
+
+  if (
+    heightError.style.display === "none" &&
+    weightError.style.display === "none"
+  ) {
+    highlighTheType(index);
+  }
 });
 
 inputHeight.addEventListener("click", () => {
@@ -250,8 +272,8 @@ inputHeight.addEventListener("click", () => {
   resetViews();
 });
 inputWeight.addEventListener("click", () => {
-    weightError.style.display = "none";
-    resetViews();
+  weightError.style.display = "none";
+  resetViews();
 });
 
 askForDetails.addEventListener("click", (event) => {
@@ -264,10 +286,7 @@ askForDetails.addEventListener("click", (event) => {
   }
 });
 
-function highlighTheType() {
-  bmiValue = calculateBMI();
-  const index = getIndexByBMI(bmiValue);
-
+function highlighTheType(index) {
   // Set the BMI Score
   bmiScore.textContent = bmiValue;
   bmiScore.style.color = "black";
@@ -285,18 +304,7 @@ function highlighTheType() {
   Object.assign(items[index].style, styles[index]);
 }
 
-function calculateBMI() {
-  const heightValue = parseFloat(document.getElementById("height").value);
-  const weightValue = parseFloat(document.getElementById("weight").value);
-
-  if(isNaN(heightValue) || heightValue < 0 || heightValue > 250) {
-    heightError.style.display = "block";
-  }
-
-  if(isNaN(weightValue) || weightValue < 0 || weightValue > 300) {
-    weightError.style.display = "block";
-  }
-
+function calculateBMI(heightValue, weightValue) {
   const heightValueM = heightValue / 100;
   const bmiValueFloat = weightValue / (heightValueM * heightValueM);
   const roundedBmiValue = bmiValueFloat.toFixed(1);
