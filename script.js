@@ -1,10 +1,11 @@
 const inputHeight = document.getElementById("height");
 const inputWeight = document.getElementById("weight");
+const heightError = document.getElementById("heightError");
+const weightError = document.getElementById("weightError");
 const calculateBtn = document.getElementById("calculate");
 const bmiScore = document.querySelector(".bmi-score");
 const items = document.querySelectorAll(".item");
 const form = document.getElementById("bmiform");
-
 // Details
 const askForDetails = document.querySelector(".ask-for-details a");
 const detailsSection = document.getElementById("details");
@@ -14,7 +15,7 @@ const genTipsList = document.querySelector(".general-tips ul");
 const vegTipsList = document.querySelector(".veg ul");
 const nonVegTipsList = document.querySelector(".non-veg ul");
 
-askForDetails.classList.add("disabled");
+resetViews();
 
 let bmiValue = 0;
 const styles = [
@@ -239,30 +240,34 @@ const tipsDetails = [
   },
 ];
 
-form.addEventListener("click", () => {
+calculateBtn.addEventListener("click", () => {
   askForDetails.classList.remove("disabled");
+  highlighTheType();
+});
 
-  const heightValue = parseFloat(document.getElementById("height").value);
-  const weightValue = parseFloat(document.getElementById("weight").value);
-
-  bmiValue = calculateBMI(heightValue, weightValue);
-  const index = getIndexByBMI(bmiValue);
-  highlighTheType(index);
+inputHeight.addEventListener("click", () => {
+  heightError.style.display = "none";
+  resetViews();
+});
+inputWeight.addEventListener("click", () => {
+    weightError.style.display = "none";
+    resetViews();
 });
 
 askForDetails.addEventListener("click", (event) => {
-  console.log("asked for details!");
-
   if (askForDetails.classList.contains("disabled")) {
     event.preventDefault();
   } else {
-    console.log("Anchor tag clicked!");
     detailsSection.style.display = "block";
+    askForDetails.style.display = "none";
     setDetails(bmiValue);
   }
 });
 
-function highlighTheType(index) {
+function highlighTheType() {
+  bmiValue = calculateBMI();
+  const index = getIndexByBMI(bmiValue);
+
   // Set the BMI Score
   bmiScore.textContent = bmiValue;
   bmiScore.style.color = "black";
@@ -280,7 +285,18 @@ function highlighTheType(index) {
   Object.assign(items[index].style, styles[index]);
 }
 
-function calculateBMI(heightValue, weightValue) {
+function calculateBMI() {
+  const heightValue = parseFloat(document.getElementById("height").value);
+  const weightValue = parseFloat(document.getElementById("weight").value);
+
+  if(isNaN(heightValue) || heightValue < 0 || heightValue > 250) {
+    heightError.style.display = "block";
+  }
+
+  if(isNaN(weightValue) || weightValue < 0 || weightValue > 300) {
+    weightError.style.display = "block";
+  }
+
   const heightValueM = heightValue / 100;
   const bmiValueFloat = weightValue / (heightValueM * heightValueM);
   const roundedBmiValue = bmiValueFloat.toFixed(1);
@@ -289,6 +305,7 @@ function calculateBMI(heightValue, weightValue) {
 }
 
 function getIndexByBMI(bmiValue) {
+  let index = 0;
   if (bmiValue < 16) {
     index = 0;
   } else if (bmiValue >= 16 && bmiValue < 17) {
@@ -320,6 +337,7 @@ function setDetails(bmiValue) {
 }
 
 function returnIndexForDetails(bmiValue) {
+  let index = 0;
   if (bmiValue < 18.5) {
     index = 0;
   } else if (bmiValue >= 18.5 && bmiValue < 24.9) {
@@ -349,4 +367,19 @@ function createAndAppendList(tipsData, tipsList) {
     listItem.innerHTML = `<b>${tipItem.title}: </b>${tipItem.tip}.`;
     tipsList.appendChild(listItem);
   });
+}
+
+function resetViews() {
+  bmiScore.textContent = "20.1";
+  bmiScore.style.color = "#c4c4c4";
+
+  items.forEach((item) => {
+    item.style.backgroundColor = "";
+    item.style.color = "";
+    item.style.padding = "";
+  });
+
+  askForDetails.style.display = "block";
+  askForDetails.classList.add("disabled");
+  detailsSection.style.display = "none";
 }
