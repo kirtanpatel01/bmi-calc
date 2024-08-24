@@ -55,15 +55,73 @@ form:hover {
   box-shadow: 0 0.25rem 0.5rem rgba(0, 39, 137, 0.1);
 }
 
-label {
+.weight-height-container {
   margin: 1rem;
   display: flex;
   flex-direction: column;
   align-items: start;
 }
 
-span {
-  padding: 0.3125rem 1rem;
+.weight-height-container .dialog-container {
+  display: flex;
+  align-items: center;
+}
+
+.dialog-container > span {
+  cursor: pointer;
+  padding: .3125rem 0;
+}
+
+.dialog-container > img {
+  cursor: pointer;
+}
+
+.unit-dialog {
+  position: absolute;
+  left: 65%;
+  font-size: 0.7rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  background-color: #00217b;
+  color: #fff;
+  text-align: center;
+  transition: transform 0.3s ease;
+  z-index: 100;
+  display: none;
+}
+
+.unit-dialog:hover {
+  transform: scale(1.05);
+  padding: 0.7rem;
+}
+
+.weight-dialog {
+  top: 35%;
+}
+
+.height-unit {
+  transition: transform 0.3s ease;
+  padding: .2725rem;
+  cursor: pointer;
+}
+
+.height-unit:hover {
+  transform: scale(1.05);
+  background-color: #f1f9ff;
+  border-radius: 1rem;
+  color: #000;
+}
+.weight-unit {
+  transition: transform 0.3s ease;
+  padding: .2725rem;
+  cursor: pointer;
+}
+
+.weight-unit:hover {
+  transform: scale(1.05);
+  background-color: #f1f9ff;
+  border-radius: 1rem;
+  color: #000;
 }
 
 input {
@@ -107,8 +165,8 @@ input[type="number"] {
 }
 
 .error-dialog {
-  margin-top: .3125rem;
-  padding: .25rem;
+  margin-top: 0.3125rem;
+  padding: 0.25rem;
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
@@ -253,14 +311,14 @@ input[type="number"] {
   padding: 1.1rem;
 }
 
-.details-header > h2, p {
+.details-header > h2,
+p {
   margin: 0;
   padding: 0;
-
 }
 
 .details-header > h2 {
-  margin-bottom: .825rem;
+  margin-bottom: 0.825rem;
 }
 
 .general-tips {
@@ -304,7 +362,6 @@ input[type="number"] {
 
 .veg-non-veg-box > h3 {
   margin: 0 0 1rem 0;
-
 }
 
 .food-box {
