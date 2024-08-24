@@ -6,6 +6,21 @@ const calculateBtn = document.getElementById("calculate");
 const bmiScore = document.querySelector(".bmi-score");
 const items = document.querySelectorAll(".item");
 const form = document.getElementById("bmiform");
+const heightUnitValue = document.querySelector(
+  ".height-unit-value"
+);
+const weightUnitValue = document.querySelector(
+  ".weight-unit-value"
+);
+const heightUpDown = document.querySelector('.height-updown');
+const weightUpDown = document.querySelector('.weight-updown');
+const heightDialog = document.querySelector(".height-dialog");
+const weightDialog = document.querySelector(".weight-dialog");
+const heightUnits = document.querySelectorAll(".height-unit");
+const weightUnits = document.querySelectorAll(".weight-unit");
+const heightUnit = document.querySelector(".height-unit-value");
+const weightUnit = document.querySelector(".weight-unit-value");
+
 // Details
 const askForDetails = document.querySelector(".ask-for-details a");
 const detailsSection = document.getElementById("details");
@@ -242,9 +257,17 @@ const tipsDetails = [
 
 calculateBtn.addEventListener("click", () => {
   askForDetails.classList.remove("disabled");
+  weightDialog.style.display = "none";
+  heightDialog.style.display = "none";
 
-  const heightValue = parseFloat(document.getElementById("height").value);
-  const weightValue = parseFloat(document.getElementById("weight").value);
+  const inputHeightValue = parseFloat(document.getElementById("height").value);
+  const inputWeightValue = parseFloat(document.getElementById("weight").value);
+
+  const inputHeightUnit = heightUnitValue.textContent;
+  const inputWeightUnit = weightUnitValue.textContent;
+
+  const heightValue = unitConvertor(inputHeightUnit, inputHeightValue);
+  const weightValue = unitConvertor(inputWeightUnit, inputWeightValue);
 
   if (isNaN(heightValue) || heightValue < 0 || heightValue > 250) {
     heightError.style.display = "block";
@@ -267,6 +290,15 @@ calculateBtn.addEventListener("click", () => {
   }
 });
 
+heightError.addEventListener("click", ()=> {
+  heightError.style.display = "none";
+  inputHeight.focus();
+});
+weightError.addEventListener("click", ()=> {
+  weightError.style.display = "none";
+  inputWeight.focus();
+});
+
 inputHeight.addEventListener("click", () => {
   heightError.style.display = "none";
   resetViews();
@@ -284,6 +316,40 @@ askForDetails.addEventListener("click", (event) => {
     askForDetails.style.display = "none";
     setDetails(bmiValue);
   }
+});
+
+weightUnitValue.addEventListener("click", () => {
+  weightDialog.style.display = "block";
+});
+
+heightUnitValue.addEventListener("click", () => {
+  heightDialog.style.display = "block";
+});
+
+weightUpDown.addEventListener("click", () => {
+  weightDialog.style.display = "block";
+});
+
+heightUpDown.addEventListener("click", () => {
+  heightDialog.style.display = "block";
+});
+
+weightUnits.forEach((unit) => {
+  unit.addEventListener("click", () => {
+    const unitValue = unit.textContent.split("(");
+    const unitSymbol = unitValue[1].slice(0, -1);
+    weightUnit.textContent = unitSymbol;
+    weightDialog.style.display = "none";
+  });
+});
+
+heightUnits.forEach((unit) => {
+  unit.addEventListener("click", () => {
+    const unitValue = unit.textContent.split("(");
+    const unitSymbol = unitValue[1].slice(0, -1);
+    heightUnit.textContent = unitSymbol;
+    heightDialog.style.display = "none";
+  });
 });
 
 function highlighTheType(index) {
@@ -390,4 +456,26 @@ function resetViews() {
   askForDetails.style.display = "block";
   askForDetails.classList.add("disabled");
   detailsSection.style.display = "none";
+  weightDialog.style.display = "none";
+  heightDialog.style.display = "none";
+}
+
+function unitConvertor(unit, value) {
+  if(unit === "cm" || unit === "kg") {
+    return value;
+  }
+
+  switch (unit) {
+    case "m":
+      return value*100;
+  
+    case "ft":
+      return value*30.48;
+
+    case "in":
+      return value*2.54;
+
+    case "lbs":
+      return value*0.45359237;
+  }
 }
