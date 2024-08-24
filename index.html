@@ -22,8 +22,21 @@
         <div class="form-container">
           <form id="bmiform">
             <div class="input-container">
-              <label for="height">
-                <span>Height (cm)</span>
+              <div class="weight-height-container">
+                <div class="dialog-container height-dialog-container">
+                  Height(<span class="unit-value height-unit-value">cm</span>)
+                  <img class="height-updown" src="up-down.svg" alt="up-down" height="10px"/>
+                  
+                  <div class="unit-dialog height-dialog">
+                    <ul>
+                      <li class="height-unit cm">Centimeter(cm)</li>
+                      <li class="height-unit m">Meter(m)</li>
+                      <li class="height-unit ft">Feet(ft)</li>
+                      <li class="height-unit in">Inches(in)</li>
+                    </ul>
+                  </div>
+                </div>
+
                 <input
                   type="number"
                   id="height"
@@ -35,10 +48,20 @@
                 <div class="error-dialog" id="heightError">
                   Please enter a valid height.
                 </div>
-              </label>
+              </div>
 
-              <label for="weight">
-                <span>Weight (kg)</span>
+              <div class="weight-height-container">
+                <div class="dialog-container weight-dialog-container">
+                  Weight(<span class="unit-value weight-unit-value">kg</span>)
+                  <img class="weight-updown" src="up-down.svg" alt="up-down" height="10px" />
+                  
+                  <div class="unit-dialog weight-dialog">
+                    <ul>
+                      <li class="weight-unit kg">Kilogram(kg)</li>
+                      <li class="weight-unit lbs">Pound(lbs)</li>
+                    </ul>
+                  </div>
+                </div>
                 <input
                   type="number"
                   id="weight"
@@ -50,7 +73,7 @@
                 <div class="error-dialog" id="weightError">
                   Please enter a valid weight.
                 </div>
-              </label>
+              </div>
 
               <a id="calculate" href="#ask-details">Calculate</a>
             </div>
