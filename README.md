@@ -29,4 +29,4 @@ You can check out a live demo of the BMI Calculator here: **[Live Demo Link]**
 To run the project locally, follow these steps:
 
 ```bash
-git clone https://github.com/yourusername/bmi-calculator.git
+git clone [https://github.com/yourusername/bmi-calculator.git](https://github.com/kirtanpatel01/bmi-calc.git)
