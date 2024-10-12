@@ -12,7 +12,7 @@ A simple web application that calculates the Body Mass Index (BMI) based on user
 
 ## Demo
 
-You can check out a live demo of the BMI Calculator here: **[Live Demo Link]**
+You can check out a live demo of the BMI Calculator here: **[[Live Demo Link](https://kirtanpatel01.github.io/bmi-calc/)]**
 
 ## How to Use
 
